@@ -1,5 +1,0 @@
-{
-  "name": "PromptInjection.app",
-  "description": "Inject custom prompts into PDF metadata directly in your browser. 100% client-side, no server uploads.",
-  "requestFramePermissions": []
-}

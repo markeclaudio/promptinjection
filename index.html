@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptInjection.app</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <style>
+    .hidden { display: none !important; }
+    .spin { animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .tab-active { background-color: #1a1a1a; color: white; }
+    .tab-inactive { background-color: transparent; color: #1a1a1a; border: 1px solid #e5e5e5; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f5f5f5] text-[#1a1a1a] font-sans selection:bg-black selection:text-white">
+
+  <header class="border-b border-black/5 bg-white/80 backdrop-blur-md sticky top-0 z-10">
+    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+          <svg class="text-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+        </div>
+        <h1 class="font-bold text-xl tracking-tight">promptinjection<span class="text-emerald-600">.app</span></h1>
+      </div>
+      <div class="flex items-center gap-4 text-sm font-medium text-black/60">
+        <div class="hidden sm:flex items-center gap-4">
+          <span data-i18n="header_client">100% Client-side</span>
+          <span class="w-1 h-1 bg-black/20 rounded-full"></span>
+          <span>Privacy First</span>
+          <span class="w-1 h-1 bg-black/20 rounded-full"></span>
+        </div>
+        <div class="flex items-center gap-1.5 bg-black/5 p-1 rounded-lg">
+          <button id="langEn" class="w-7 h-5 rounded-[4px] overflow-hidden opacity-50 hover:opacity-100 transition-all focus:outline-none" title="English">
+            <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-full h-full object-cover">
+          </button>
+          <button id="langIt" class="w-7 h-5 rounded-[4px] overflow-hidden opacity-50 hover:opacity-100 transition-all focus:outline-none" title="Italiano">
+            <img src="https://flagcdn.com/w40/it.png" alt="Italiano" class="w-full h-full object-cover">
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      
+      <!-- Left Column: Info -->
+      <div class="md:col-span-5 space-y-8">
+        <div class="space-y-4">
+          <h2 class="text-4xl font-bold leading-tight tracking-tighter" data-i18n="hero_title">
+            Inject prompts into PDFs.
+          </h2>
+          <p class="text-lg text-black/60 leading-relaxed" data-i18n="hero_subtitle">
+            Add instructions, descriptions, or hidden prompts to your PDF metadata in seconds.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <p class="text-sm text-black/70" data-i18n="feature_1">No files are uploaded to the server. Everything happens in your browser.</p>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <p class="text-sm text-black/70" data-i18n="feature_2">Modify the "Subject" field of the PDF.</p>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <p class="text-sm text-black/70" data-i18n="feature_3">Invisible text injection (opacity 0) on the first page.</p>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <p class="text-sm text-black/70" data-i18n="feature_4">Ideal for security testing, watermarking, or AI cataloging.</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-blue-50 border border-blue-100 rounded-2xl flex gap-3">
+          <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <p class="text-xs text-blue-700 leading-relaxed">
+            <strong data-i18n="note_title">Note:</strong> <span data-i18n="note_text">The prompt will be inserted into the "Subject" field of the PDF metadata. Many PDF readers and AI systems read this field as the main description.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Tool -->
+      <div class="md:col-span-7">
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 border border-black/5 space-y-6 transition-all duration-300">
+          
+          <!-- Tabs -->
+          <div class="flex space-x-2 p-1 bg-black/5 rounded-xl">
+            <button id="tabInject" class="flex-1 py-2 px-4 rounded-lg text-sm font-bold transition-all tab-active" data-i18n="tab_inject">Inject</button>
+            <button id="tabVerify" class="flex-1 py-2 px-4 rounded-lg text-sm font-bold transition-all tab-inactive" data-i18n="tab_verify">Verify</button>
+          </div>
+
+          <!-- File Upload Area (Shared) -->
+          <div class="space-y-3">
+            <label class="text-xs font-bold uppercase tracking-widest text-black/40 px-1" data-i18n="step_1">
+              1. Upload PDF
+            </label>
+            
+            <div id="dropZone" class="relative group cursor-pointer">
+              <input type="file" id="fileInput" accept=".pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+              <div class="border-2 border-dashed border-black/10 rounded-2xl p-10 flex flex-col items-center justify-center gap-4 transition-all group-hover:border-black/20 group-hover:bg-black/[0.02]">
+                <div class="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-6 h-6 text-black/40" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                </div>
+                <div class="text-center">
+                  <p class="font-medium" data-i18n="drop_title">Click or drag here</p>
+                  <p class="text-xs text-black/40 mt-1" data-i18n="drop_subtitle">Only PDF files (max 50MB)</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="fileInfo" class="hidden flex items-center justify-between p-4 bg-black/5 rounded-2xl border border-black/10 transition-all">
+              <div class="flex items-center gap-3 overflow-hidden">
+                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                </div>
+                <div class="overflow-hidden">
+                  <p id="fileName" class="font-medium truncate text-sm">filename.pdf</p>
+                  <p id="fileSize" class="text-[10px] text-black/40 uppercase tracking-wider">0.00 MB</p>
+                </div>
+              </div>
+              <button id="clearFileBtn" class="p-2 hover:bg-white rounded-full text-black/40 hover:text-red-500 transition-colors">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Inject Mode Content -->
+          <div id="injectContent" class="space-y-6">
+            <div class="space-y-3">
+              <label class="text-xs font-bold uppercase tracking-widest text-black/40 px-1" data-i18n="step_2_inject">
+                2. Enter Prompt
+              </label>
+              <textarea id="promptInput" data-i18n-placeholder="prompt_placeholder" placeholder="Enter text to inject into PDF description..." class="w-full h-32 p-4 bg-black/[0.02] border border-black/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all resize-none text-sm leading-relaxed"></textarea>
+            </div>
+
+            <div class="pt-2">
+              <button id="actionBtn" disabled class="w-full py-4 rounded-2xl font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all active:scale-[0.98] bg-black/5 text-black/20 cursor-not-allowed">
+                <svg id="btnSpinner" class="hidden w-4 h-4 border-2 border-white/20 border-t-white rounded-full spin" viewBox="0 0 24 24"></svg>
+                <svg id="btnIcon" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                <span id="btnText" data-i18n="btn_inject">Inject & Download</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Verify Mode Content -->
+          <div id="verifyContent" class="hidden space-y-6">
+            <div class="pt-2">
+              <button id="verifyBtn" disabled class="w-full py-4 rounded-2xl font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all active:scale-[0.98] bg-black/5 text-black/20 cursor-not-allowed">
+                <svg id="verifySpinner" class="hidden w-4 h-4 border-2 border-white/20 border-t-white rounded-full spin" viewBox="0 0 24 24"></svg>
+                <svg id="verifyIcon" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3"/><path d="M19 12h3"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="m5 5 2 2"/><path d="m17 17 2 2"/><path d="m5 19 2-2"/><path d="m17 5 2-2"/><circle cx="12" cy="12" r="3"/></svg>
+                <span id="verifyBtnText" data-i18n="btn_verify">Scan PDF</span>
+              </button>
+            </div>
+
+            <!-- Verify Results -->
+            <div id="verifyResults" class="hidden space-y-3 p-4 bg-black/5 rounded-2xl border border-black/10">
+              <h3 class="font-bold text-sm" data-i18n="scan_results">Scan Results</h3>
+              <ul id="resultsList" class="space-y-2 text-sm">
+                <!-- Results populated by JS -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Status Messages -->
+          <div id="errorMsg" class="hidden flex items-center gap-2 text-red-500 text-xs font-medium bg-red-50 p-3 rounded-xl border border-red-100 transition-all">
+            <svg class="w-4 h-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+            <span>Error</span>
+          </div>
+          
+          <div id="successMsg" class="hidden flex items-center gap-2 text-emerald-600 text-xs font-medium bg-emerald-50 p-3 rounded-xl border border-emerald-100 transition-all">
+            <svg class="w-4 h-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span data-i18n="success_msg">PDF processed successfully!</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="max-w-4xl mx-auto px-6 py-12 border-t border-black/5 mt-12">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+      <p class="text-xs text-black/40 font-medium" data-i18n="footer_text">
+        © 2026 promptinjection.app • No data leaves your browser.
+      </p>
+      <div class="flex gap-6">
+        <a href="#" class="text-xs font-bold uppercase tracking-widest text-black/40 hover:text-black transition-colors">Privacy</a>
+        <a href="#" class="text-xs font-bold uppercase tracking-widest text-black/40 hover:text-black transition-colors">Github</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/src/main.js" type="module"></script>
+</body>
+</html>
+

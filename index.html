@@ -194,7 +194,7 @@
   <footer class="max-w-4xl mx-auto px-6 py-12 border-t border-black/5 mt-12">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
       <p class="text-xs text-black/40 font-medium">
-        <span data-i18n="footer_text">© 2026 promptinjection.app • No data leaves your browser. Developed by </span> <a href="https://www.dottormarc.it/">Dottor Marc Cybersecurity Team</a>
+        <span data-i18n="footer_text">© 2026 promptinjection.app • No data leaves your browser. By </span> <a href="https://www.dottormarc.it/">Dottor Marc Cybersecurity Team</a> P.IVA 0455118550
       </p>
       <div class="flex gap-6">
         <a href="https://www.dottormarc.it/privacy-policy" class="text-xs font-bold uppercase tracking-widest text-black/40 hover:text-black transition-colors">Privacy</a>
@@ -204,6 +204,23 @@
   </footer>
 
   <script src="/src/main.js" type="module"></script>
+  <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://stat.drmcloud.it/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '13']);
+    _paq.push(['disableCookies']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
 </body>
 </html>
 

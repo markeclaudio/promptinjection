@@ -31,7 +31,8 @@ const translations = {
     verify_res_suspicious: "⚠️ Suspiciously long metadata found!",
     verify_res_ok: "✅ Metadata length seems normal.",
     verify_res_opacity: "⚠️ Found text with 0 opacity or invisible rendering!",
-    verify_res_opacity_ok: "✅ No invisible text detected."
+    verify_res_opacity_ok: "✅ No invisible text detected.",
+    terms_text: "I agree to use this software on systems I own or for which I have explicit, written permission to conduct security testing."
   },
   it: {
     header_client: "100% Lato Client",
@@ -65,7 +66,8 @@ const translations = {
     verify_res_suspicious: "⚠️ Trovati metadati sospettosamente lunghi!",
     verify_res_ok: "✅ La lunghezza dei metadati sembra normale.",
     verify_res_opacity: "⚠️ Trovato testo con opacità 0 o rendering invisibile!",
-    verify_res_opacity_ok: "✅ Nessun testo invisibile rilevato."
+    verify_res_opacity_ok: "✅ Nessun testo invisibile rilevato.",
+    terms_text: "Accetto di utilizzare questo software su sistemi di mia proprietà o per i quali ho un permesso esplicito e scritto per condurre test di sicurezza."
   }
 };
 
@@ -132,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileSizeDisplay = document.getElementById('fileSize');
   const clearFileBtn = document.getElementById('clearFileBtn');
   const promptInput = document.getElementById('promptInput');
+  const termsCheckbox = document.getElementById('termsCheckbox');
   const actionBtn = document.getElementById('actionBtn');
   const btnText = document.getElementById('btnText');
   const btnIcon = document.getElementById('btnIcon');
@@ -187,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUI();
   });
   promptInput.addEventListener('input', updateUI);
+  termsCheckbox.addEventListener('change', updateUI);
   actionBtn.addEventListener('click', injectPrompt);
   verifyBtn.addEventListener('click', verifyPdf);
 
@@ -234,7 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (currentMode === 'inject') {
       const prompt = promptInput.value.trim();
-      if (currentFile && prompt) {
+      const isTermsAccepted = termsCheckbox.checked;
+      if (currentFile && prompt && isTermsAccepted) {
         actionBtn.disabled = false;
         actionBtn.classList.remove('bg-black/5', 'text-black/20', 'cursor-not-allowed');
         actionBtn.classList.add('bg-black', 'text-white', 'hover:bg-black/90', 'shadow-lg', 'shadow-black/10');

@@ -147,6 +147,15 @@
               <textarea id="promptInput" data-i18n-placeholder="prompt_placeholder" placeholder="Enter text to inject into PDF description..." class="w-full h-32 p-4 bg-black/[0.02] border border-black/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all resize-none text-sm leading-relaxed"></textarea>
             </div>
 
+            <div class="flex items-start gap-3 pt-2">
+              <div class="flex items-center h-5">
+                <input id="termsCheckbox" type="checkbox" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2 cursor-pointer">
+              </div>
+              <label for="termsCheckbox" class="text-xs text-black/60 leading-relaxed cursor-pointer" data-i18n="terms_text">
+                I agree to use this software on systems I own or for which I have explicit, written permission to conduct security testing.
+              </label>
+            </div>
+
             <div class="pt-2">
               <button id="actionBtn" disabled class="w-full py-4 rounded-2xl font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all active:scale-[0.98] bg-black/5 text-black/20 cursor-not-allowed">
                 <svg id="btnSpinner" class="hidden w-4 h-4 border-2 border-white/20 border-t-white rounded-full spin" viewBox="0 0 24 24"></svg>

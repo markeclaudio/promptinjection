@@ -1,6 +1,6 @@
 # 📄 PDF Prompt Injector
 
-**Inject prompts into PDFs in seconds.** A lightweight, secure tool to add instructions, descriptions, or hidden prompts to your PDF metadata and content.
+**Inject prompts into PDFs in seconds.** A lightweight, secure tool to add instructions, descriptions, or hidden prompts to your PDF metadata and content to test your AI application.
  [https://promptinjection.app](https://promptinjection.app)
 
 ---
@@ -40,9 +40,18 @@ The tool utilizes two primary methods to ensure your prompts are detected by AI 
 
 ---
 
-## 📝 Important Note
-> [!NOTE]
-> Most modern AI systems and PDF parsers treat the "Subject" field as a primary source of context. This tool ensures your instructions are placed exactly where these systems look first.
+> [!WARNING]
+> ## ⚠️ Legal Disclaimer
+>
+> **This tool is provided for educational and ethical security testing purposes only.**
+>
+> The primary goal of `promptinjection.app` is to assist developers, security researchers, and red teamers in identifying, understanding, and mitigating prompt injection vulnerabilities in LLM-based applications. 
+>
+> 1. **Authorized Testing Only:** You must only use this software on systems you own or for which you have explicit, written permission to conduct security testing. Using this tool against third-party services (e.g., OpenAI, Anthropic, Google) or any Company without authorization may violate their **Terms of Service** and could lead to account suspension or legal action.
+> 2. **No Liability:** The author(s) of this project shall not be held responsible for any misuse of this software, nor for any direct or indirect damage, data loss, or legal consequences resulting from its use. 
+> 3. **"As Is" Basis:** This software is provided "as is" without warranty of any kind, express or implied. The user assumes all risks associated with its execution.
+>
+> **By downloading, installing, or using this software, you acknowledge that you have read this disclaimer and agree to act in compliance with all applicable local and international laws.**
 
 ---
 

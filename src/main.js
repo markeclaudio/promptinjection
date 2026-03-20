@@ -38,7 +38,7 @@ const translations = {
     header_client: "100% Lato Client",
     hero_title: "Inietta prompt nei PDF.",
     hero_subtitle: "Aggiungi istruzioni, descrizioni o prompt nascosti ai metadati del tuo PDF in pochi secondi.",
-    feature_1: "Nessun file viene caricato sul server. Tutto avviene nel tuo browser. Servizio offerto da ",
+    feature_1: "Nessun file viene caricato sul server. Tutto avviene nel tuo browser.",
     feature_2: "Modifica il campo \"Oggetto\" del PDF.",
     feature_3: "Iniezione di testo invisibile (opacità 0) sulla prima pagina.",
     feature_4: "Ideale per test di sicurezza, watermarking o catalogazione AI.",

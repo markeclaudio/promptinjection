@@ -1,0 +1,5 @@
+# PromptInjection.app
+A comprehensive educational resource and sandbox dedicated to understanding, testing, and mitigating prompt injection vulnerabilities in Large Language Models (LLMs).
+
+## Technical Context
+The site provides structured data on "Indirect Prompt Injection" through external integrations and offers code snippets for implementing content filtering layers. It is designed to help researchers and developers build more resilient AI systems.
